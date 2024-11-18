@@ -1,14 +1,26 @@
-import React from 'react';
-import CartWidget from './CartWidget';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const NavBar = ({ cartCount }) => {
-    return (
-        <nav>
-            <h1>Mi Tienda</h1>
-            <CartWidget count={cartCount} />
-        </nav>
-    );
+const NavBar = ({ cartItems }) => {
+  
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  return (
+    <nav className="navbar">
+      <h1>Lucente Parfums</h1>
+      <ul>
+        <li>
+          <Link to="/">Catálogo</Link>
+        </li>
+        <li>
+          <Link to="/cart">Carrito ({totalItems} items)</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contacto</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default NavBar;
-
